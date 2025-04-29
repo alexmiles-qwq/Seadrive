@@ -2,7 +2,7 @@
 The feline help buddy!
 
 
-## How to use/host/install/?
+## How to use/host/install?
 1. Clone the repo.
 2. Download and install [luvit](https://luvit.io/).
 3. Run ```luvit main.lua```
@@ -13,7 +13,7 @@ The feline help buddy!
 2. Extract it.
 3. Run starter.bat
 
-## How do i add my own questions/anwsers or edit them?
+## How do i add my own questions/answers or edit them?
 It had to be a feature in a separate module, but for now you have to edit the code yourself. Ask ChatGPT, if you dont understand. 
 
 
