@@ -1,0 +1,484 @@
+/* File: style.css */
+
+/* Basic Reset & Body Style */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(180deg, #f0f4f8 0%, #ffffff 30%, #e8eef2 100%);
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  background: linear-gradient(to bottom, #a8d89a, #8bc37a);
+  padding: 10px 20px 5px 20px;
+  border-bottom: 1px solid #6a9b5e;
+  position: relative;
+  z-index: 10;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.logo h1 {
+  margin: 0 0 5px 0;
+  font-size: 3.5em;
+  color: #3e5e38;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.logo p {
+  margin: 0;
+  color: #4a7c40;
+  font-size: 1.1em;
+}
+
+.sub-nav-text {
+  max-width: 960px;
+  margin: 5px auto 0 auto;
+  padding-left: 10px;
+  font-size: 0.8em;
+  color: #4a7c40;
+}
+
+.sub-nav-text span {
+  margin-right: 20px;
+}
+
+
+/* Mascot Styling */
+.mascot-area {
+  position: relative;
+}
+
+.header-mascot-area {
+   margin-top: 5px;
+}
+
+.mascot-img {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.mascot-header-img {
+  width: 80px;
+  height: auto;
+}
+
+/* Speech Bubbles */
+.speech-bubble {
+  background-color: #e8f4e4;
+  border: 1px solid #a0c494;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  position: absolute;
+  box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+  white-space: nowrap;
+  color: #3e5e38;
+  z-index: 5;
+}
+
+.speech-bubble::after, .speech-bubble::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+/* Top Speech Bubble */
+.speech-bubble-top {
+  bottom: 55px;
+  right: 70px;
+  min-width: 130px;
+}
+
+.speech-bubble-top::after { /* Pointer fill */
+  top: 100%;
+  right: 20px;
+  border-width: 10px 8px 0 8px;
+  border-color: #e8f4e4 transparent transparent transparent;
+}
+.speech-bubble-top::before { /* Pointer border */
+  top: 100%;
+  right: 19px;
+  border-width: 11px 9px 0 9px;
+  border-color: #a0c494 transparent transparent transparent;
+  z-index: -1;
+}
+
+
+/* Navigation */
+nav {
+  background-color: #e0e0e0;
+  border-top: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+  padding: 0;
+  text-align: center;
+  box-shadow: inset 0 2px 3px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 9;
+}
+
+nav a {
+  display: inline-block;
+  padding: 8px 25px;
+  margin: 0;
+  text-decoration: none;
+  color: #555;
+  font-weight: bold;
+  background-color: #d0d0d0;
+  border-left: 1px solid #c0c0c0;
+  border-right: 1px solid #c0c0c0;
+  position: relative;
+  top: -1px;
+}
+
+nav a:first-child { border-left: none; }
+nav a:last-child{ border-right: none; }
+
+nav a.active, nav a:hover {
+  background-color: #f0f0f0;
+  color: #333;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Main Content */
+main {
+  flex-grow: 1;
+  padding: 30px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.ask-section h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #444;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.ask-input-group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.ask-input-group input[type="text"] {
+  padding: 10px 15px;
+  font-size: 1.1em;
+  border: 1px solid #ccc;
+  border-right: none;
+  min-width: 400px;
+  border-radius: 4px 0 0 4px;
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.ask-input-group button {
+  padding: 10px 25px;
+  font-size: 1.1em;
+  font-weight: bold;
+  border: 1px solid #aaa;
+  background-color: #d0d0d0;
+  cursor: pointer;
+  border-radius: 0 4px 4px 0;
+  color: #444;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.ask-input-group button:hover { background-color: #c0c0c0; }
+.ask-input-group button:active {
+  background-color: #b0b0b0;
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+
+/* Answer Section Specifics */
+.answer-section {
+  position: relative;
+  padding-bottom: 150px; /* Space for mascot */
+  margin-top: 20px;
+}
+
+.answer-box {
+  background-color: #e8f4e4;
+  border: 1px solid #a0c494;
+  padding: 15px 20px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  max-width: 700px;
+  margin: 0 auto;
+  color: #3e5e38;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.answer-box .answer-title {
+  margin-top: 0;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+/* Style for the "answer not found" box on ask page */
+.answer-box.not-found-box {
+  background-color: #fadde1;
+  border-color: #f4a7b9;
+  color: #a74a60;
+}
+
+
+/* Positioning the mascot within the answer section */
+.answer-section .main-mascot-area {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 2;
+}
+
+/* Styling for the default mascot if no answer section is shown */
+main > .main-mascot-area {
+   position: absolute;
+   bottom: 10px;
+   right: 10px;
+   z-index: 2;
+}
+
+.mascot-main-img {
+  width: 120px;
+  height: auto;
+}
+
+/* Bottom speech bubble pointing from mascot to answer box */
+.speech-bubble-bottom {
+  padding: 0;
+  border: none;
+  background: none;
+  box-shadow: none;
+  width: 0;
+  height: 0;
+  bottom: 110px;
+  right: 100px;
+}
+
+.speech-bubble-bottom::after { /* Pointer fill */
+  bottom: -10px;
+  right: -20px;
+  border-width: 0 20px 20px 0;
+  border-color: transparent #e8f4e4 transparent transparent;
+  position: absolute;
+}
+
+.speech-bubble-bottom::before { /* Pointer border */
+  bottom: -11px;
+  right: -22px;
+  border-width: 0 22px 22px 0;
+  border-color: transparent #a0c494 transparent transparent;
+  z-index: -1;
+}
+
+/* Styles specific to QOTD, About, Not Found page content sections */
+.content-section {
+  margin-top: 30px;
+  text-align: center;
+  padding-bottom: 150px; /* Space for potential mascot */
+  position: relative; /* Context for mascot */
+}
+
+.content-section h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #444;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+
+.content-section .answer-box {
+  max-width: 700px;
+  margin: 20px auto;
+  text-align: left;
+}
+
+/* Specific styling for About box */
+.about-content .answer-box {
+  background-color: #e4eef4;
+  border-color: #a4c4e0;
+  color: #385e7a;
+}
+
+/* Styling for 404 page */
+.notfound-content .notfound-title {
+  font-size: 3em;
+  color: #cc6666;
+}
+
+.notfound-content .answer-box.notfound-box {
+  max-width: 600px;
+  text-align: center;
+  background-color: #fcf0f0;
+  border-color: #eebbbb;
+  color: #a35f5f;
+}
+.notfound-content .notfound-link-wrapper {
+   margin-top: 20px;
+}
+.notfound-content .notfound-link {
+  padding: 8px 15px;
+  background-color: #8bc37a;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  display: inline-block; /* Allows padding and centering */
+}
+.notfound-content .notfound-link:hover {
+  background-color: #7ab36a;
+}
+
+/* Center the mascot within these generic content sections */
+.content-section .main-mascot-area {
+  position: relative;
+  margin-top: 20px;
+  display: inline-block;
+  bottom: auto;
+  right: auto;
+}
+
+
+/* ==========================
+ Mobile Responsive Styles
+ ========================== */
+@media (max-width: 600px) {
+
+  /* --- Header --- */
+  .header-content {
+      flex-direction: column; /* Stack logo and mascot area */
+      align-items: center;
+      text-align: center;
+  }
+
+  .logo h1 { font-size: 2.5em; }
+  .logo p { font-size: 1em; }
+
+  .header-mascot-area { margin-top: 15px; }
+  .mascot-header-img { width: 70px; } /* Slightly smaller header mascot */
+
+   .speech-bubble-top {
+      right: auto;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 75px; /* Adjust vertical pos for smaller mascot */
+      white-space: normal;
+      text-align: center;
+      min-width: 100px; /* Allow smaller bubble */
+      padding: 6px 10px; /* Smaller padding */
+  }
+   .speech-bubble-top::after, .speech-bubble-top::before {
+       right: 50%;
+       transform: translateX(50%);
+       margin-right: -8px;
+   }
+   .speech-bubble-top::before { margin-right: -9px; }
+
+  .sub-nav-text { padding-left: 0; text-align: center; margin-top: 10px; }
+   .sub-nav-text span { display: block; margin-right: 0; margin-bottom: 3px; font-size: 0.9em; }
+
+
+  /* --- Navigation --- */
+  nav { padding: 5px 0; }
+  nav a {
+      display: block;
+      width: 90%;
+      margin: 5px auto;
+      padding: 10px;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      top: 0;
+  }
+  nav a.active, nav a:hover { border-bottom: 1px solid #bbb; background-color: #e8e8e8; }
+
+
+  /* --- Main Content & Ask Form --- */
+  main { padding: 20px 10px; }
+
+  .ask-section h2 { font-size: 2em; }
+  .content-section h2 { font-size: 1.8em; } /* Reduce other headings too */
+
+  .ask-input-group { flex-direction: column; align-items: stretch; }
+  .ask-input-group input[type="text"] {
+      min-width: auto;
+      width: 100%;
+      box-sizing: border-box;
+      border-right: 1px solid #ccc;
+      border-radius: 4px 4px 0 0;
+      margin-bottom: 5px;
+      font-size: 1em;
+  }
+  .ask-input-group button {
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 0 0 4px 4px;
+      font-size: 1em;
+      padding: 12px;
+  }
+
+
+  /* --- Answer / Content Boxes --- */
+  .answer-box { max-width: 95%; padding: 10px 15px; }
+  .content-section .answer-box { max-width: 95%; } /* Apply to QOTD/About/404 too */
+
+  .answer-section, .content-section {
+     padding-bottom: 120px; /* Adjust space for potentially smaller mascot */
+  }
+
+
+  /* --- Mascots --- */
+   /* Bottom mascot (within answer/content sections) */
+  .answer-section .main-mascot-area, .content-section .main-mascot-area {
+      right: 5px;
+      bottom: 5px;
+  }
+   /* Ensure mascot is absolute positioned again if inside answer/content */
+  .answer-section .main-mascot-area { position: absolute; }
+  /* Keep mascot relative/centered in generic content sections */
+  .content-section .main-mascot-area { position: relative; display: block; margin: 15px auto 0 auto; }
+
+
+  .mascot-main-img { width: 90px; } /* Make bottom mascot smaller */
+
+  /* Bottom mascot speech bubble pointer (only shown in ask section) */
+  .speech-bubble-bottom {
+      right: 80px;
+      bottom: 85px;
+  }
+   .speech-bubble-bottom::after { border-width: 0 15px 15px 0; right: -15px; bottom: -8px; }
+   .speech-bubble-bottom::before { border-width: 0 17px 17px 0; right: -17px; bottom: -9px; }
+
+  /* Default bottom mascot (when no answer shown on Ask page) */
+   main > .main-mascot-area {
+       right: 5px;
+       bottom: 5px;
+       position: absolute; /* Ensure it's absolute */
+   }
+
+   /* 404 specific adjustments */
+   .notfound-content .notfound-title { font-size: 2.2em; }
+
+
+} /* End of @media query */
