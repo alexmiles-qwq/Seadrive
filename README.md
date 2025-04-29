@@ -3,7 +3,6 @@ The feline help buddy!
 
 
 ## How to use/host/install/?
---
 1. Clone the repo.
 2. Download and install (luvit)[https://luvit.io/].
 3. Run ```luvit main.lua```
