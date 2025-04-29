@@ -1,13 +1,16 @@
 # Seadrive
 The feline help buddy!
----
+
 
 ## How to use/host/install/?
 --
 1. Clone the repo.
-2. Download and install luvit
+2. Download and install (luvit)[https://luvit.io/].
 3. Run ```luvit main.lua```
-4. Now just run your browser and visit ```localhost:8000``` (or different port if you changed it)
+4. Now just run your browser and visit ```localhost:8000``` (or different port if you changed it).
+5. Ask ChatGPT if you dont understand.
 
+## How do i add my own questions/anwsers or edit them?
+It had to be a feature in a separate module, but for now you have to edit the code yourself. Ask ChatGPT, if you dont understand. 
 
 
