@@ -14,6 +14,6 @@ The feline help buddy!
 3. Run starter.bat
 
 ## How do i add my own questions/answers or edit them?
-It had to be a feature in a separate module, but for now you have to edit the code yourself. Ask ChatGPT, if you dont understand. 
+Navigate to Add page in your browser
 
 
