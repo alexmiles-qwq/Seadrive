@@ -1,12 +1,14 @@
 local ContentService = {}
-ContentService.libs = {} 
+ContentService.libs = {} -- libs table will be injected by require2
 
 local knowledgeService -- Reference to the KnowledgeService
 
 -- --- QOTD Data ---
+-- Now stores author as well, matching KnowledgeService data structure
 local qotdData = {
   question = "Loading...",
-  answer = "Selecting question..."
+  answer = "Selecting question...",
+  author = ""
 }
 ContentService.qotdData = qotdData -- Make it accessible
 
@@ -21,37 +23,47 @@ ContentService.aboutData = aboutData -- Make it accessible
 
 -- Initialize the service with dependencies
 function ContentService:init(kbService)
-    if not kbService then
-        print("ContentService: KnowledgeService dependency missing!")
-        return false
+    -- Validate KnowledgeService dependency
+    if not kbService or type(kbService) ~= 'table' or type(kbService.getAllQuestions) ~= 'function' or type(kbService.getAnswer) ~= 'function' then
+        print("ContentService: KnowledgeService dependency missing or invalid!")
+        -- Allow init to succeed but functions relying on kbService will error or return defaults
+        knowledgeService = nil 
+        return true
     end
     knowledgeService = kbService
     print("ContentService initialized with KnowledgeService.")
     return true
 end
 
--- Update QOTD using the local knowledgeBase
+-- Update QOTD using the knowledgeBase from KnowledgeService
 function ContentService:updateQotd()
-  if not knowledgeService then
-      print("ContentService: Cannot update QOTD, KnowledgeService not initialized.")
+  -- Check if KnowledgeService dependency was successfully initialized
+  if not knowledgeService or not knowledgeService.getAllQuestions or not knowledgeService.getAnswer then
+      print("ContentService: Cannot update QOTD, KnowledgeService not initialized or methods missing.")
       qotdData.question = "Service Error"
       qotdData.answer = "Knowledge service not loaded."
+      qotdData.author = ""
       return
   end
 
-  local questions = knowledgeService:getAllQuestions()
-  if #questions == 0 then
-    print("Warning: Knowledge base is empty. Cannot update QOTD.")
+  local questions = knowledgeService:getAllQuestions() -- Use the service method
+  if type(questions) ~= 'table' or #questions == 0 then -- Add type check for safety
+    print("Warning: Knowledge base is empty or questions could not be retrieved. Cannot update QOTD.")
     qotdData.question = "No questions available"
     qotdData.answer = "Add some questions using the 'Add' page!"
+     qotdData.author = ""
     return
   end
   local randomIndex = math.random(#questions)
   local selectedQuestion = questions[randomIndex]
   local selectedAnswerData = knowledgeService:getAnswer(selectedQuestion) -- Use the service method
+
+  -- Update qotdData, including the author field
   qotdData.question = selectedQuestion
   qotdData.answer = (selectedAnswerData and selectedAnswerData.answer) or "Internal Error: Could not find answer for selected QOTD."
-  print(os.date("%Y-%m-%d %H:%M:%S") .. " - Updated QOTD to: [" .. qotdData.question .. "]")
+  qotdData.author = (selectedAnswerData and selectedAnswerData.author) or ""
+
+  print(os.date("%Y-%m-%d %H:%M:%S") .. " - Updated QOTD to: [" .. qotdData.question .. "] by " .. (qotdData.author ~= "" and qotdData.author or "Anonymous"))
 end
 
 
