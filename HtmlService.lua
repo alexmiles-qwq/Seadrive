@@ -76,7 +76,7 @@ function HtmlService:generateHtml(pageType, pageData, statusMsg, user) -- Added 
     local isAdmin = false
     if user and user.badges and type(user.badges) == 'table' then
         for _, badgeId in ipairs(user.badges) do
-            if badgeId == 'admin' then
+            if badgeId == 'admin' or badgeId == "owner" then
                 isAdmin = true
                 break
             end
@@ -558,6 +558,11 @@ function HtmlService:generateHtml(pageType, pageData, statusMsg, user) -- Added 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta property="og:title" content="Ask Seadrive">
+    <meta property="og:description" content="Your feline help buddy!">
+    <meta property="og:image" content="/images/mascot.png">
+    <meta property="og:url" content="http://seadrive.online">
+    <meta property="og:type" content="website">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SeaDrive</title>

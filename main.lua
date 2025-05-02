@@ -139,11 +139,15 @@ end
 -- Authorization Helper
 local function isAdmin(user)
     if not user or type(user.badges) ~= 'table' then
-        return false
+        return false  
     end
-    for _, badgeId in ipairs(user.badges) do
-        if badgeId == 'admin' or badgeId == 'owner' then
+    for key, badgeId in ipairs(user.badges) do
+        print(key, badgeId)
+      
+      if badgeId == 'admin' then
             return true
+        elseif badgeId == "owner" then
+          return true
         end
     end
     return false
@@ -202,7 +206,8 @@ end
 
 
 -- --- HTTP Server Logic ---
-local port = process.env.PORT or 8000
+local port = process.env.PORT or 80
+
 http.createServer(function (req, res)
     attachUserMiddleware(req, res, function(req, res) -- Apply middleware first
 
